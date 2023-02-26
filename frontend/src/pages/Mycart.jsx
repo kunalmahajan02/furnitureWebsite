@@ -31,6 +31,13 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
 `
+const Centre = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+`
 
 const Mycart = () => {
   const { custid } = useParams();
@@ -67,17 +74,17 @@ const Mycart = () => {
             <Content>
               <h3>{product.ProductId}</h3>
               <div>{product.ProductName}</div>
-              <div>{product.cost}</div>
+              <div>₹{product.Cost}</div>
               <div>{product.Dimensions}</div>
-              <div> {product.Cost * product.Quantity}</div>
+              <div> ₹{product.Cost * product.Quantity}</div>
               <Adder quantity={product.Quantity} ProductId={product.ProductId} userid={custid} setproducts={setproducts} setcost={settotcost} />
 
             </Content>
           </Wrapper>
         ))}
       </div>
-      <div>
-        <button onClick={() => {
+      <Centre>
+        <button class = " btn btn-primary" onClick={() => {
           // products.map(async (product) => {
           //   let data = {
           //     productId: product.ProductId,
@@ -116,9 +123,9 @@ const Mycart = () => {
 
         }}>Confirm Order</button>
         {totalcost.map(cost => (
-          <div>{cost.totcost}</div>
+          <div>₹{cost.totcost}</div>
         ))}
-      </div>
+      </Centre>
     </>
   )
 }

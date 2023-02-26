@@ -150,8 +150,8 @@ app.post("/sendconfirmation", async (req, res) => {
     let mailTransporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.USER,
-        pass: process.env.PASSWORD,
+        user: "manojkumarb.cs20@rvce.edu.in",
+        pass: "#M@no!27.30",
       },
     });
 
@@ -164,7 +164,7 @@ app.post("/sendconfirmation", async (req, res) => {
 
     mailTransporter.sendMail(details, (err) => {
       if (err) {
-        console.log("not sent");
+        console.log(err,"not sent");
       } else {
         console.log("email sent!");
       }
@@ -218,6 +218,7 @@ app.post("/reset-password/:id/:token", async (req, res) => {
     console.log(error);
     res.json({ status: "Something Went Wrong" });
   }
+  res.json({status:"allokay"})
 });
 
 app.listen(3001,() => {

@@ -35,6 +35,10 @@ const Img = styled.img`
 `
 const Content = styled.div`
     flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 `
 
 const Productss = styled.div`
@@ -76,10 +80,10 @@ const Products = () => {
                         </Imgg>
                         <Content>
                             <Link style={{ textDecoration: 'none' }} to={`../${custid}/product/${product.ProductId}`}>
-                                <h2  style={{ textDecoration: 'none', color: '#220606' }}>{product.ProductId}</h2>
+                                {/* <h2  style={{ textDecoration: 'none', color: '#220606' }}>{product.ProductId}</h2> */}
                                 <h2  style={{ textDecoration: 'none', color: '#220606' }}>{product.ProductName}</h2>
                                 <h2 style={{ textDecoration: 'none', color: '#220606' }}>{product.Desc}</h2>
-                                <h2  style={{ textDecoration: 'none', color: '#220606' }}>{product.Cost}</h2>
+                                <h2  style={{ textDecoration: 'none', color: '#220606' }}>₹{product.Cost}</h2>
                             </Link>
                             {/* <Link to={`../${custid}/product/${product.ProductId}`}>Explore</Link> */}
                         </Content>

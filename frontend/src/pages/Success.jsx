@@ -31,6 +31,7 @@ const handleSubmit = (e) => {
     .then((data) => {
       console.log(data);
       alert("Email Sent");
+      window.location.href = "/signin"
     });
 }
 const Success = () => {

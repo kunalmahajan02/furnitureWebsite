@@ -49,9 +49,9 @@ const Adder = (props) => {
 
     return (
         <Adderr>
-            <button style={{ height: "100%", flex: "1", border: "2px solid black" }} onClick={handleClick2}>-</button>
+            <button class = " btn btn-secondary" style={{ height: "100%", flex: "1", border: "2px solid black" }} onClick={handleClick2}>-</button>
             <h3 id='1' style={{ flex: "2", display: "flex", alignContent: "center", justifyContent: "center" }}>{counter}</h3>
-            <button style={{ flex: "1", border: "2px solid black" }} onClick={handleClick1}>+</button>
+            <button class = " btn btn-primary" style={{ flex: "1", border: "2px solid black" }} onClick={handleClick1}>+</button>
         </Adderr>
     )
 }

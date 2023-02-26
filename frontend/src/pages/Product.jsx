@@ -205,8 +205,8 @@ const Product = () => {
                         <Content>
                             <h1 style={{ fontSize: "40px" }}>{prod.ProductName}</h1>
                             <h2>{prod.Desc}</h2>
-                            <h2>-/ {prod.Cost} Rs</h2>
-
+                            <h2>₹{prod.Cost}</h2>
+                            <button class = "btn btn-primary" ><a href="https://lackadaisical-hazel-vase.glitch.me/">Tap to See 3D view Of the Product</a></button>        
                             <Cart>
                                 <Adder>
                                     <button style={{ flex: "1", border: "2px solid black" }} onClick={handleClick2}>-</button>
