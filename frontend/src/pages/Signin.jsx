@@ -128,7 +128,7 @@ export default class Signin extends Component {
            </button>
         </Inner>
         <p style={{position:"relative",fontWeight:"bold", color:"black"}} className="forgot-password text-right">
-          Forgot <a style={{position:"relative" , textDecoration:"none"}} href="#">password?</a>
+          Forgot <a style={{position:"relative" , textDecoration:"none"}} href="/reset">password?</a>
         </p>
         <p style={{position:"relative",fontWeight:"bold", color:"black", fontSize: "20px"}} className="forgot-password text-right">
           New User <a style={{position:"relative" , textDecoration:"none" , fontSize: "20px"}} href="/register">Register Now!</a>

@@ -91,4 +91,36 @@ const Categories = () => {
     )
 }
 
-export default Categories;
+
+// <!DOCTYPE html>
+// <html lang="en">
+//   <head>
+
+//     <meta charset="utf-8" />
+//     <meta name="viewport" content="width=device-width, initial-scale=1" />
+//     <link rel="icon" href="https://glitch.com/favicon.ico" />
+    
+//     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+//     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    
+//     <link rel="stylesheet" href="/style.css" />
+//     <script src="/script.js" defer></script>
+//   </head>
+//   <body>
+//     <h1>
+//       hello world
+//     </h1>
+//     <a-scene embedded arjs>
+//       <a-assets>
+//         <a-asset-item id = "model" response-type = "arraybuffer" src = "https://cdn.glitch.global/be4e8cb7-df3f-4a20-886c-806c34f827b8/arkunal.glb?v=1676379154109"></a-asset-item>
+//       </a-assets>
+      
+//       <a-marker present="hiro" >
+//         <a-entity gltf-model = "#model" position = "0 0 0" scale = "0.25 0.25 0.25" rotation = "0 0 0"></a-entity>
+//       </a-marker>
+      
+//       <a-entity camera></a-entity>
+//     </a-scene>
+//   </body>
+// </html>
+export default Categories

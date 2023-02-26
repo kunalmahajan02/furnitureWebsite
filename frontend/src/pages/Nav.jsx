@@ -6,7 +6,7 @@ import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
 import PermIdentitySharpIcon from '@mui/icons-material/PermIdentitySharp';
 const Container = styled.div`
   height: 60px;
-  background-color: #8cc02b;
+  background-image: linear-gradient(to bottom , #70d73c, #42ac42) ;
 `
 
 const Wrapper = styled.div`
@@ -54,10 +54,10 @@ const Nav = (props) => {
     <Container>
       <Wrapper>
         <Left><Logo>FURNTITURE.</Logo></Left>
-        <Middle>
+        {/* <Middle>
           <SearchSharpIcon />
           <Input placeholder='Give the category you want to Explore'/>
-        </Middle>
+        </Middle> */}
         <Right>
           <Cover>
             <button onClick={handleevent}><ShoppingCartIcon /></button>

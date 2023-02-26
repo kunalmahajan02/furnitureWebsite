@@ -62,6 +62,21 @@ const Adder = styled.div`
     border: 2px solid black;
 `
 
+const Form = styled.form`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+const Inner = styled.div`
+    position: relative;
+    font-weight: bolder;
+    font-size:20px;
+`
+
 const Product = () => {
     const { ProductId } = useParams();
     const { custid } = useParams();
@@ -87,10 +102,11 @@ const Product = () => {
                 const res = await axios.get("http://localhost:5000/images/" + ProductId);
                 setimage(res.data);
             } catch (err) {
-                console.log(err);
+                console.log("err");
             }
         }
         FetchImages();
+
     }, []);
 
     // const [products, setproducts] = useState([]);
@@ -119,17 +135,61 @@ const Product = () => {
     }
     const handleEvent = async () => {
         const data = {
-            userid : custid,
-            ProductId : ProductId,
-            quantity : document.getElementById("1").innerText
+            userid: custid,
+            ProductId: ProductId,
+            quantity: document.getElementById("1").innerText
         }
-        const res = await axios.post("http://localhost:5000/AddCart",data)
+        const res = await axios.post("http://localhost:5000/AddCart", data)
         console.log(res);
     }
 
+    const [review, setreview] = useState("");
+    const handleSubmitfinal = async (e) => {
+        e.preventDefault();
+        fetch("http://localhost:5005/sentiment", {
+            'method': 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // const v = {...breakdown, data};
+                // console.log(v);
+                // setbreakdown(v);
+                setreview("")
+                // document.getElementById("5").value("")
+                let data2 = {
+                    comment: review,
+                    userid: custid,
+                    productid: ProductId,
+                    positive: data.Positive,
+                    negative: data.Negative,
+                    neutral: data.Neutral
+                }
+                console.log(data2)
+                fetch("http://localhost:3001/addreview", {
+                    'method': 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    body: JSON.stringify(data2)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+            })
+
+    }
     return (
         <div>
-            <Nav id = {custid} />
+            <Nav id={custid} />
             <Container>
                 {product.map(prod => (
                     <Productt key={prod.ProductId}>
@@ -149,9 +209,9 @@ const Product = () => {
 
                             <Cart>
                                 <Adder>
-                                    <button style={{flex:"1",border:"2px solid black"}} onClick={handleClick2}>-</button>
-                                    <h3 id='1' style={{flex:"1", display:"flex",alignContent:"center" ,justifyContent:"center" }}>{counter}</h3>
-                                    <button style={{flex:"1",border:"2px solid black"}} onClick={handleClick1}>+</button>
+                                    <button style={{ flex: "1", border: "2px solid black" }} onClick={handleClick2}>-</button>
+                                    <h3 id='1' style={{ flex: "1", display: "flex", alignContent: "center", justifyContent: "center" }}>{counter}</h3>
+                                    <button style={{ flex: "1", border: "2px solid black" }} onClick={handleClick1}>+</button>
                                 </Adder>
 
                                 <button style={{ flex: "content", color: "red" }} onClick={handleEvent}>
@@ -165,6 +225,30 @@ const Product = () => {
                 ))
                 }
             </Container>
+            <br />
+            <Form onSubmit={handleSubmitfinal}>
+                <h3 style={{ position: 'relative', backgroundColor: "black", color: "white", padding: "10px 10px" }}>Add a Review</h3>
+
+                <Inner className="mb-3">
+                    <label>Type a Review</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Review here"
+                        value={review}
+                        id="5"
+                        style={{ border: "1.5px solid black", width: "400px", height: "200px" }}
+                        onChange={() => { setreview(document.getElementById("5").value) }}
+                    />
+                </Inner>
+
+                <Inner style={{ paddingTop: "10px" }} className="d-grid">
+                    <button type="submit" className="btn btn-primary">
+                        <a style={{ position: "relative", textDecoration: "none", color: "black" }} > Add</a>
+                    </button>
+                </Inner>
+
+            </Form>
             <ChakraProvider>
                 <Similar style={{ padding: "100px" }}>
                     {products.map(product => (
